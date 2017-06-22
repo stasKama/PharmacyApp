@@ -32,13 +32,29 @@
             </div>
             <div class="navbar-collapse collapse col-md-4 col-md-offset-4">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index"><span class="info glyphicon glyphicon-home"></span>Home</a></li>
-                    <li><a asp-area="" asp-controller="Pharacy" asp-action="CatalogPharmacy"><span class="info glyphicon glyphicon-book"></span>Catalog</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact"><span class="info glyphicon glyphicon-info-sign"></span>Contact</a></li>
+                    <li><a asp-controller="Home" asp-action="Index"><span class="info glyphicon glyphicon-home"></span>Home</a></li>
+                    <li><a asp-controller="Pharmacy" asp-action="СatalogPharmacy"><span class="info glyphicon glyphicon-book"></span>Catalog</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact"><span class="info glyphicon glyphicon-info-sign"></span>Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="custom-search-input">
+                    <form class="input-group">
+                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
     </div>

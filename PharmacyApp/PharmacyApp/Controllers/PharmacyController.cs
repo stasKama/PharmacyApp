@@ -40,13 +40,88 @@ namespace PharmacyApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Medicine model)
         {
-            _context.Medicines.Add(model);
+            if (ModelState.IsValid)
+            {
+                _context.Medicines.Add(model);
+                await _context.SaveChangesAsync();
+                ViewBag.Message = "Препорат \"" + model.Name + "\" добавлен в каталог аптеки.";
+                ModelState.Clear();
+                ViewBag.Companies = new SelectList(_context.Companies.ToList(), "Id", "Name");
+                ViewBag.InternationalNames = new SelectList(_context.InternationalNames.ToList(), "Id", "Name");
+                return View();
+            }
+            return View(model);
+        }
+
+        [Route("medicine/{id}")]
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (id != null)
+            {
+                var model = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
+                if (model != null)
+                    return View(model);
+            }
+            return NotFound();
+        }
+
+        [Route("medicine/delete/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id != null)
+            {
+                var model = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
+                if (model != null)
+                {
+                    return View(model);
+                }
+            }
+            return NotFound();
+        }
+
+        [Route("medicine/delete/{id}")]
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int? id)
+        {
+            if (id != null)
+            {
+                var model = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
+                if (model != null)
+                {
+                    _context.Medicines.Remove(model);
+                    await _context.SaveChangesAsync();
+                    return View(model);
+                }
+            }
+            return NotFound();
+        }
+
+        [Route("medicine/edit/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                var model = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
+                if (model != null)
+                {
+                    ViewBag.Companies = new SelectList(_context.Companies.ToList(), "Id", "Name");
+                    ViewBag.InternationalNames = new SelectList(_context.InternationalNames.ToList(), "Id", "Name");
+                    return View(model);
+                }
+            }
+            return NotFound();
+        }
+
+        [Route("medicine/edit/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(Medicine model)
+        {
+            _context.Medicines.Update(model);
             await _context.SaveChangesAsync();
-            ViewBag.Message = "Препорат " + model.Name + " добавлен в каталог";
-            ModelState.Clear();
-            ViewBag.Companies = new SelectList(_context.Companies.ToList(), "Id", "Name");
-            ViewBag.InternationalNames = new SelectList(_context.InternationalNames.ToList(), "Id", "Name");
-            return View();
+            return RedirectToAction("СatalogPharmacy");
         }
     }
 }

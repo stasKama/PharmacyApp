@@ -29,6 +29,39 @@ textarea {
     line-height: 1.4;
 }
 
+#custom-search-input {
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+    margin-top: 5px;
+}
+
+    #custom-search-input input {
+        border: 0;
+        box-shadow: none;
+    }
+
+    #custom-search-input button {
+        margin: 2px 0 0 0;
+        background: none;
+        box-shadow: none;
+        border: 0;
+        color: #666666;
+        padding: 0 8px 0 10px;
+        border-left: solid 1px #ccc;
+    }
+
+        #custom-search-input button:hover {
+            border: 0;
+            box-shadow: none;
+            border-left: solid 1px #ccc;
+        }
+
+    #custom-search-input .glyphicon-search {
+        font-size: 23px;
+    }
+
 /* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
@@ -95,6 +128,45 @@ textarea {
 
 .glyphicon-plus:hover {
     transform: rotateZ(180deg);
+}
+
+.box {
+    background: #fff;
+    transition: all 0.2s ease;
+    border: 2px dashed #dadada;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-clip: padding-box;
+    padding: 0 20px 20px 20px;
+    min-height: 340px;
+}
+
+    .box:hover {
+        border: 2px solid #525C7A;
+    }
+
+    .box span.box-title {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    .box .box-content {
+        padding: 16px;
+        border-radius: 0 0 2px 2px;
+        background-clip: padding-box;
+        box-sizing: border-box;
+    }
+
+        .box .box-content p {
+            color: #515c66;
+            text-transform: none;
+        }
+
+.map {
+    margin-top: 10px;
 }
 
 /* Hide/rearrange for smaller screens */

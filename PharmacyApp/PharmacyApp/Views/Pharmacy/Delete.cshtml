@@ -1,0 +1,35 @@
+@model PharmacyApp.Models.Medicine
+
+@{
+    ViewData["Title"] = "Delete " + Model.Name;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+        <input type="hidden" asp-for="Id" />
+        <h4>@Model.Name </h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dd>
+                @Model.PrescriptionMedicine
+            </dd>
+            <dd>
+                @Model.Dosage
+            </dd>
+            <dd>
+                @Model.Price
+            </dd>
+            <dd>
+                @Model.Description
+            </dd>
+        </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default button" /> |
+            <a asp-action="CatalogPharmacy">Back to Catalog</a>
+        </div>
+    </form>
+</div>

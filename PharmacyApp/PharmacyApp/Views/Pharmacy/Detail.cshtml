@@ -1,0 +1,31 @@
+﻿@model PharmacyApp.Models.Medicine
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>@Model.Name </h4 >
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Model.PrescriptionMedicine
+        </dd>
+        <dd>
+            @Model.Dosage
+        </dd>
+        <dd>
+            @Model.Price
+        </dd>
+        <dd>
+            @Model.Description
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+    <a asp-action="CatalogPharmacy">Back to Catelog</a>
+</div>

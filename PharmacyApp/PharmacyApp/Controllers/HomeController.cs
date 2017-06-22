@@ -13,6 +13,7 @@ namespace PharmacyApp.Controllers
             return View();
         }
 
+        [Route("contact")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
