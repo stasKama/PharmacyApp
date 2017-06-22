@@ -1,0 +1,74 @@
+﻿@model PharmacyApp.Models.Medicine
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create" asp-controller="Pharmacy" method="post">
+    <div class="form-horizontal">
+        <h4>Medicine</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PrescriptionMedicine" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="PrescriptionMedicine" type="checkbox" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Price" class="form-control" pattern="\d+(,\d{2})?" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Dosage" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Dosage" class="form-control" type="number" step="1" min="1" />
+                <span asp-validation-for="Dosage" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CompanyId" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.Companies">
+                    <option selected="selected" disabled="disabled">Выберите производителя</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="InternationalNameId" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <select asp-for="InternationalNameId" class="form-control" asp-items="ViewBag.InternationalNames">
+                    <option selected="selected" disabled="disabled">Выберите основное вещество</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default button" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="СatalogPharmacy">Back to Catalog</a>
+</div> 

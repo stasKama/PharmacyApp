@@ -25,7 +25,8 @@ namespace PharmacyApp.Models
 
         [Required(ErrorMessage = "Поле \"Цена лекарства\" обязательное для ввода")]
         [Display(Name = "Цена лекарства")]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
+
         [DataType(DataType.MultilineText)]
         [Display(Name = "Описание лекарства")]
         public string Description { get; set; }

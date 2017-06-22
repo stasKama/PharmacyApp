@@ -93,9 +93,10 @@ textarea {
     transition: transform 3s linear;
 }
 
-    .glyphicon-plus:hover {
-        transform: rotateZ(180deg);
-    }
+.glyphicon-plus:hover {
+    transform: rotateZ(180deg);
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

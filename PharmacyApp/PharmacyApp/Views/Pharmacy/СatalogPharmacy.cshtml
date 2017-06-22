@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PharmacyApp.Models.Medicine>
+
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+<h2>Catalog pharmacy</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название препората</th>
+            <th>Наличие рецепта</th>
+            <th>Цена</th>
+            <th>Дозировка</th>
+            <th>Прозводитель</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.PrescriptionMedicine
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.Dosage
+                </td>
+                <td>
+                    @item.Company?.Name
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
