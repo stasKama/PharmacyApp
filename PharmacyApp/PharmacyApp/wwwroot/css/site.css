@@ -1,6 +1,12 @@
-﻿body {
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 /* Wrapping element */
@@ -28,6 +34,68 @@ textarea {
     width: 100%;
 }
 
+.color-header, .color-header div .mobile .menu {
+    background-color: #44678f;
+    font-family: Arial;
+}
+
+.button {
+    background-color: #44678f;
+    color: #feffff;
+}
+
+.color-header .row .navbar-nav a, .color-header .row .mobile a {
+    color: #feffff;
+}
+
+    .color-header .row .navbar-nav a:hover, .color-header .row .mobile a:hover {
+        color: #c2c2c2;
+    }
+
+.color-header div a {
+    font-size: 20px;
+}
+
+.color-header ul a {
+    font-size: 17px;
+}
+
+.color-header ul {
+    margin-left: 5px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.container-footer {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}
+
+.container-footer .text-muted {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.info {
+    margin-right: 5px;
+}
+
+.glyphicon-plus {
+    color: #5abc4d;
+    transition: transform 3s linear;
+}
+
+    .glyphicon-plus:hover {
+        transform: rotateZ(180deg);
+    }
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

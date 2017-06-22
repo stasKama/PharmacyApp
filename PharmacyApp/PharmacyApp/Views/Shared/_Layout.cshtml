@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PharmacyApp</title>
+    <title>@ViewData["Title"]</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -19,33 +19,34 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <nav class="navbar navbar-inverse navbar-fixed-top color-header">
+        <div class="row">
+            <div class="navbar-header col-md-2 col-md-offset-1 mobile">
+                <button type="button" class="navbar-toggle menu" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">PharmacyApp</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand title"><span class="info glyphicon glyphicon-plus"></span>Pharmacy</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse col-md-4 col-md-offset-4">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index"><span class="info glyphicon glyphicon-home"></span>Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About"><span class="info glyphicon glyphicon-info-sign"></span>About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact"><span class="info glyphicon glyphicon-user"></span>Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - PharmacyApp</p>
-        </footer>
     </div>
+    <footer class="footer">
+        <div class="container-footer">
+            <p class="text-muted">&copy; 2017 - PharmacyApp</p>
+        </div>
+    </footer>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
