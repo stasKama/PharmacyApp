@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PharmacyApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace PharmacyApp
 {
@@ -27,7 +29,8 @@ namespace PharmacyApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            string connection = Configuration.GetConnectionString("PharmacyConnection");
+            services.AddDbContext<PharmacyContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
         }
 
@@ -55,6 +58,8 @@ namespace PharmacyApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            InitialData.InitializeDb(app.ApplicationServices);
         }
     }
 }

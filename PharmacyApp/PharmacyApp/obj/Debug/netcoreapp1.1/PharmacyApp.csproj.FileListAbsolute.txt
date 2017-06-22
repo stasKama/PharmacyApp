@@ -1,0 +1,9 @@
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\bin\Debug\netcoreapp1.1\PharmacyApp.deps.json
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\bin\Debug\netcoreapp1.1\PharmacyApp.runtimeconfig.json
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\bin\Debug\netcoreapp1.1\PharmacyApp.runtimeconfig.dev.json
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\bin\Debug\netcoreapp1.1\PharmacyApp.dll
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\obj\Debug\netcoreapp1.1\PharmacyApp.csprojResolveAssemblyReference.cache
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\obj\Debug\netcoreapp1.1\PharmacyApp.AssemblyInfo.cs
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\bin\Debug\netcoreapp1.1\PharmacyApp.pdb
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\obj\Debug\netcoreapp1.1\PharmacyApp.dll
+C:\Users\Lenovo\Documents\PharmacyApp\PharmacyApp\PharmacyApp\obj\Debug\netcoreapp1.1\PharmacyApp.pdb
