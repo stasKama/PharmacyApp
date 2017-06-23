@@ -18,6 +18,9 @@ namespace PharmacyApp.Models
         [Display(Name = "Наличие рецепта")]
         public bool PrescriptionMedicine { get; set; }
 
+        [Display(Name = "Наличие в аптеке")]
+        public bool AvailabilityPharmacy { get; set; }
+
         [Required(ErrorMessage = "Поле \"Дозировка лекарства\" обязательное для ввода")]
         [Display(Name = "Дозировка лекарства")]
         [Range(1, 10000, ErrorMessage = "Недопустимая дозировка")]

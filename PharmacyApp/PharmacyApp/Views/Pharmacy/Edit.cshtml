@@ -21,7 +21,15 @@
         <div class="form-group">
             <label asp-for="PrescriptionMedicine" class="col-md-3 control-label"></label>
             <div class="col-md-9">
-                <input asp-for="PrescriptionMedicine" type="checkbox" />
+                <input asp-for="PrescriptionMedicine" type="checkbox" ng-model="checkedMedicine" ng-init="checkedMedicine=false" />
+                <span class="label" ng-class="checkedMedicine === false ? 'label-success' : 'label-danger'">{{checkedMedicine === false ? 'Без рецепта' : 'С рецептом'}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AvailabilityPharmacy" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="AvailabilityPharmacy" type="checkbox" ng-model="checkedPharmacy" ng-init="checkedPharmacy=false" />
+                <span class="label" ng-class="checkedPharmacy ? 'label-success' : 'label-danger'">{{checkedPharmacy ? 'Есть в наличии' : 'Нет в наличии'}}</span>
             </div>
         </div>
         <div class="form-group">
@@ -68,5 +76,5 @@
 </form>
 
 <div>
-    <a asp-action="CatalogPharmacy">Back to Catalog</a>
+    <a asp-controller="Pharmacy" asp-action="CatalogPharmacy">Back to Catalog</a>
 </div>

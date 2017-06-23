@@ -21,9 +21,15 @@ namespace PharmacyApp.Controllers
         }
 
         [Route("catalog")]
-        public async Task<IActionResult> СatalogPharmacy()
+        public IActionResult СatalogPharmacy()
         {
-            return View(await _context.Medicines.Include(m => m.Company).ToListAsync());
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetMedicines()
+        {
+            return Json(_context.Medicines.Include(m => m.Company).ToList());
         }
 
         [Route("medicine/create")]

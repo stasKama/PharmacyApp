@@ -16,6 +16,13 @@ body {
     padding-right: 15px;
 }
 
+.link-medicine {
+    text-decoration: none;
+}
+
+.link-medicine:hover {
+    text-decoration: underline;
+}
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
@@ -169,6 +176,9 @@ textarea {
     margin-top: 10px;
 }
 
+.information {
+    width: 75px;
+}
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

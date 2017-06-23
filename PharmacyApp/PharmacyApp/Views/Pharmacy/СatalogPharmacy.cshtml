@@ -1,41 +1,31 @@
-﻿@model IEnumerable<PharmacyApp.Models.Medicine>
-
-@{
+﻿@{
     ViewData["Title"] = "Catalog";
 }
 
 <h2>Catalog pharmacy</h2>
-
-<table class="table">
-    <thead>
+<div ng-controller="PharmacyCtrl">
+    <table class="table row">
         <tr>
-            <th>Название препората</th>
-            <th>Наличие рецепта</th>
+            <th>Название</th>
+            <th>Наличие</th>
             <th>Цена</th>
-            <th>Дозировка</th>
-            <th>Прозводитель</th>
+            <th>Компания</th>
         </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.Name
-                </td>
-                <td>
-                    @item.PrescriptionMedicine
-                </td>
-                <td>
-                    @item.Price
-                </td>
-                <td>
-                    @item.Dosage
-                </td>
-                <td>
-                    @item.Company?.Name
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <tr ng-repeat="med in medicines">
+            <td>
+                <a href="medicine/{{med.id}}" class="link-medicine">{{med.name}}</a>
+            </td>
+            <td>
+                <span class="label" ng-class="med.availabilityPharmacy === false ? 'label-success' : 'label-danger'">
+                    {{med.availabilityPharmacy === false ? 'Есть' : 'Нет'}}
+                </span>
+            </td>
+            <td>
+               {{med.price}}
+            </td>
+            <td>
+                {{med.company.name}}
+            </td>
+        </tr>
+    </table>
+</div>
