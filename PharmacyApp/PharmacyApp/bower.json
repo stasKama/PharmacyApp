@@ -5,6 +5,11 @@
     "bootstrap": "3.3.7",
     "jquery": "2.2.0",
     "jquery-validation": "1.14.0",
-    "jquery-validation-unobtrusive": "3.2.6"
+    "jquery-validation-unobtrusive": "3.2.6",
+    "angular": "v1.6.4-build.5317+sha.0c3620b",
+    "angular-route": "v1.6.5-build.5410+sha.a03b75c"
+  },
+  "resolutions": {
+    "angular": "1.6.5-build.5410+sha.a03b75c"
   }
 }
