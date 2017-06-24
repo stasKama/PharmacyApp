@@ -110,5 +110,40 @@ namespace PharmacyApp.Models
                 context.SaveChanges();
             }
         }
+
+        public static void InitializeUserRole(IServiceProvider serviceProvider)
+        {
+            string adminRoleName = "admin";
+            string userRoleName = "user";
+
+            string adminEmail = "bel.pharmary@tut.by";
+            string adminPassword = "beLka201pHarmary";
+
+            using (PharmacyContext db = serviceProvider.GetRequiredService<PharmacyContext>())
+            {
+                Role adminRole = db.Roles.FirstOrDefault(x => x.Name == adminRoleName);
+                Role userRole = db.Roles.FirstOrDefault(x => x.Name == userRoleName);
+                // добавляем роли, если их нет
+                if (adminRole == null)
+                {
+                    adminRole = new Role { Name = adminRoleName };
+                    db.Roles.Add(adminRole);
+                }
+                if (userRole == null)
+                {
+                    userRole = new Role { Name = userRoleName };
+                    db.Roles.Add(userRole);
+                }
+                db.SaveChanges();
+
+                // добавляем администратора, если его нет
+                User admin = db.Users.FirstOrDefault(u => u.Email == adminEmail);
+                if (admin == null)
+                {
+                    db.Users.Add(new User { Email = adminEmail, Password = adminPassword, Role = adminRole });
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace PharmacyApp.Models
         public DbSet<InternationalName> InternationalNames { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public PharmacyContext(DbContextOptions<PharmacyContext> options)
             : base(options)

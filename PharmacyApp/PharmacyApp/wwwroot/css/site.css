@@ -16,7 +16,7 @@ body {
     padding-right: 15px;
 }
 
-.link-medicine {
+.link-medicine, .link-table:hover {
     text-decoration: none;
 }
 
@@ -107,20 +107,18 @@ textarea {
 .footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
     /* Set the fixed height of the footer here */
-    height: 60px;
-    background-color: #f5f5f5;
+    height: 40px;
+    background-color: #141414;
+    color: #919191;
 }
 
 .container-footer {
-    width: auto;
-    max-width: 680px;
     padding: 0 15px;
 }
 
 .container-footer .text-muted {
-    margin: 20px 0;
+    margin: 10px 0 0 0;
     text-align: center;
 }
 

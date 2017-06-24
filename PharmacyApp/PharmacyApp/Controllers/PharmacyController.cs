@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using PharmacyApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,6 +15,7 @@ namespace PharmacyApp.Controllers
     public class PharmacyController : Controller
     {
         private PharmacyContext _context;
+        private static string Name = null;
 
         public PharmacyController(PharmacyContext context)
         {
@@ -21,17 +23,21 @@ namespace PharmacyApp.Controllers
         }
 
         [Route("catalog")]
-        public IActionResult СatalogPharmacy()
+        public IActionResult СatalogPharmacy(string SearchMedicine)
         {
+            Name = SearchMedicine;
             return View();
         }
 
         [HttpGet]
         public JsonResult GetMedicines()
         {
-            return Json(_context.Medicines.Include(m => m.Company).ToList());
+            var Medicines = Name == null ? _context.Medicines.Include(m => m.Company) : 
+                _context.Medicines.Include(m => m.Company).Where(m => m.Name.Contains(Name));
+            return Json(Medicines.ToList());
         }
 
+        [Authorize(Roles = "admin")]
         [Route("medicine/create")]
         [HttpGet]
         public IActionResult Create()
@@ -71,6 +77,7 @@ namespace PharmacyApp.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "admin")]
         [Route("medicine/delete/{id}")]
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
@@ -86,7 +93,6 @@ namespace PharmacyApp.Controllers
             return NotFound();
         }
 
-        [Route("medicine/delete/{id}")]
         [HttpPost]
         [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int? id)
@@ -104,6 +110,7 @@ namespace PharmacyApp.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "admin")]
         [Route("medicine/edit/{id}")]
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)

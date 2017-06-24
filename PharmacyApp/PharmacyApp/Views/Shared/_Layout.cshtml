@@ -43,10 +43,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="custom-search-input">
-                    <form class="input-group">
-                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                    <form id="submit-form" asp-action="СatalogPharmacy" asp-controller="Pharmacy" class="input-group" method="get">
+                        <input id="search-field" name="SearchMedicine" type="text" class="form-control" placeholder="Search" />
                         <span class="input-group-btn">
-                            <button class="btn btn-info btn-lg" type="button">
+                            <button class="btn btn-info btn-lg" onclick="submit">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
                         </span>
@@ -58,11 +58,11 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-    <footer class="footer">
+    <div class="footer navbar-fixed-bottom">
         <div class="container-footer">
             <p class="text-muted">&copy; 2017 - PharmacyApp</p>
         </div>
-    </footer>
+    </div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

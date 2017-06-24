@@ -6,12 +6,19 @@
 <div ng-controller="PharmacyCtrl">
     <table class="table row">
         <tr>
-            <th>Название</th>
-            <th>Наличие</th>
-            <th>Цена</th>
-            <th>Компания</th>
+            <th class="col-md-3"><a class="link-table" href="">Название</a></th>
+            <th class="col-md-3"><a class="link-table" href="">Наличие</a></th>
+            <th class="col-md-3"><a class="link-table" href="" ng-click="sort('price')">
+                Цена
+                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'),
+                                                'glyphicon-chevron-down' : isSortDown('price')}"></i>
+                </a></th>
+            <th class="col-md-3"><a class="link-table" href="" ng-click="sort('company.name')">Компания
+                    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('company.name'),
+                                                'glyphicon-chevron-down' : isSortDown('company.name')}"></i>
+                </a></th>
         </tr>
-        <tr ng-repeat="med in medicines">
+        <tr ng-repeat="med in medicines | orderBy:sortField:reverse">
             <td>
                 <a href="medicine/{{med.id}}" class="link-medicine">{{med.name}}</a>
             </td>
