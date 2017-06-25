@@ -32,9 +32,22 @@ namespace PharmacyApp.Controllers
         [HttpGet]
         public JsonResult GetMedicines()
         {
-            var Medicines = Name == null ? _context.Medicines.Include(m => m.Company) : 
-                _context.Medicines.Include(m => m.Company).Where(m => m.Name.Contains(Name));
-            return Json(Medicines.ToList());
+            List<MedicineModelView> Medicines = null;
+            if (Name != null)
+            {
+                var IdAnalogues = _context.Medicines.Where(m => m.Name.Contains(Name)).Select(m => m.InternationalNameId).Distinct();
+                Medicines = _context.Medicines.
+                    Include(m => m.Company).
+                    Where(m => IdAnalogues.Contains(m.InternationalNameId)).
+                    Select(m => new MedicineModelView() { Id = m.Id,
+                                                          Name = m.Name,
+                                                          Company = m.Company.Name,
+                                                          Price = m.Price,
+                                                          AvailabilityPharmacy = m.AvailabilityPharmacy,
+                                                          Analogue = !m.Name.Contains(Name) }).
+                    ToList();
+            }
+            return Json(Medicines);
         }
 
         [Authorize(Roles = "admin")]
@@ -70,7 +83,9 @@ namespace PharmacyApp.Controllers
         {
             if (id != null)
             {
-                var model = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
+                var model = await _context.Medicines.Include(m => m.InternationalName).
+                                                     Include(m => m.Company).
+                                                     FirstOrDefaultAsync(m => m.Id == id);
                 if (model != null)
                     return View(model);
             }
@@ -84,7 +99,9 @@ namespace PharmacyApp.Controllers
         {
             if (id != null)
             {
-                var model = await _context.Medicines.FirstOrDefaultAsync(m => m.Id == id);
+                var model = await _context.Medicines.Include(m => m.InternationalName).
+                                                     Include(m => m.Company).
+                                                     FirstOrDefaultAsync(m => m.Id == id);
                 if (model != null)
                 {
                     return View(model);

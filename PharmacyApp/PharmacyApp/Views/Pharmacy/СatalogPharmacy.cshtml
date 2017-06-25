@@ -4,35 +4,54 @@
 
 <h2>Catalog pharmacy</h2>
 <div ng-controller="PharmacyCtrl">
-    <table class="table row">
-        <tr>
-            <th class="col-md-3"><a class="link-table" href="">Название</a></th>
-            <th class="col-md-3"><a class="link-table" href="">Наличие</a></th>
-            <th class="col-md-3"><a class="link-table" href="" ng-click="sort('price')">
-                Цена
-                <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'),
+    <div ng-if="medicines != null">
+        <div class="row">
+            <label for="filterAvailability" class="col-md-3 control-label">Show in stock</label>
+            <div class="col-md-9">
+                <input id="filterAvailability" type="checkbox" ng-model="checkedAvailability" ng-init="checkedAvailability=false" ng-click="setFilterAvailability(checkedAvailability)" />
+            </div>
+        </div>
+        <div class="row">
+            <label for="filterAnalogue" class="col-md-3 control-label">Show analogue medicine</label>
+            <div class="col-md-9">
+                <input id="filterAnalogue" type="checkbox" ng-model="checkedAnalogue" ng-init="checkedAnalogue=true" ng-click="setFilterAnalogue(checkedAnalogue)" />
+            </div>
+        </div>
+        <table class="table row">
+            <tr>
+                <th class="col-md-3"><a class="link-table" href="">Name</a></th>
+                <th class="col-md-3"><a class="link-table" href="">Availability</a></th>
+                <th class="col-md-3">
+                    <a class="link-table" href="" ng-click="sort('price')">
+                        Price
+                        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'),
                                                 'glyphicon-chevron-down' : isSortDown('price')}"></i>
-                </a></th>
-            <th class="col-md-3"><a class="link-table" href="" ng-click="sort('company.name')">Компания
-                    <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('company.name'),
+                    </a>
+                </th>
+                <th class="col-md-3">
+                    <a class="link-table" href="" ng-click="sort('company.name')">
+                        Comnpany
+                        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('company.name'),
                                                 'glyphicon-chevron-down' : isSortDown('company.name')}"></i>
-                </a></th>
-        </tr>
-        <tr ng-repeat="med in medicines | orderBy:sortField:reverse">
-            <td>
-                <a href="medicine/{{med.id}}" class="link-medicine">{{med.name}}</a>
-            </td>
-            <td>
-                <span class="label" ng-class="med.availabilityPharmacy === false ? 'label-success' : 'label-danger'">
-                    {{med.availabilityPharmacy === false ? 'Есть' : 'Нет'}}
-                </span>
-            </td>
-            <td>
-               {{med.price}}
-            </td>
-            <td>
-                {{med.company.name}}
-            </td>
-        </tr>
-    </table>
+                    </a>
+                </th>
+            </tr>
+            <tr ng-repeat="med in medicines | filter: FilterPharmacy | orderBy:sortField:reverse">
+                <td>
+                    <a href="medicine/{{med.id}}" class="link-medicine">{{med.name}}</a>
+                </td>
+                <td>
+                    <span class="label" ng-class="med.availabilityPharmacy ? 'label-success' : 'label-danger'">
+                        {{med.availabilityPharmacy ? 'Yes' : 'No'}}
+                    </span>
+                </td>
+                <td>
+                    {{med.price}}
+                </td>
+                <td>
+                    {{med.company}}
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

@@ -54,7 +54,7 @@ textarea {
         background: none;
         box-shadow: none;
         border: 0;
-        color: #666666;
+        color: #666;
         padding: 0 8px 0 10px;
         border-left: solid 1px #ccc;
     }
@@ -82,6 +82,10 @@ textarea {
 .button {
     background-color: #44678f;
     color: #feffff;
+}
+
+.color-name-derail {
+    color: #44678f;
 }
 
 .color-header .row .navbar-nav a, .color-header .row .mobile a {
@@ -176,6 +180,53 @@ textarea {
 
 .information {
     width: 75px;
+}
+
+.shape {
+    border-style: solid;
+    border-width: 0 100px 60px 0;
+    float: right;
+    height: 0px;
+    width: 0px;
+    transform: rotate(360deg);
+}
+
+.shape-text {
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    position: relative;
+    right: -40px;
+    top: 2px;
+    white-space: nowrap;
+    transform: rotate(30deg);
+}
+
+.project {
+    min-height: 300px;
+    height: auto;
+    width: 300px;
+    background: #fff;
+    border: 1px solid #44678f;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.div-style {
+    margin: 15px 0;
+}
+
+.project-info {
+    border-color: #5bc0de;
+}
+
+    .project-info .shape {
+        border-color: transparent #44678f transparent transparent;
+        border-color: rgba(255,255,255,0) #44678f rgba(255,255,255,0) rgba(255,255,255,0);
+    }
+
+.project-content {
+    padding: 0 20px 10px;
 }
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

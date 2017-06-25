@@ -2,30 +2,61 @@
 
 @{
     ViewData["Title"] = Model.Name;
+    var lablePrescriptionMedicine = (Model.PrescriptionMedicine == false ? "label-success" : "label-danger");
 }
 
-<h2>Detail</h2>
-
 <div>
-    <h4>@Model.Name </h4 >
+    <h3 class="color-name-derail">@Model.Name </h3 >
     <hr />
-    <dl class="dl-horizontal">
-        <dd>
-            @Model.PrescriptionMedicine
-        </dd>
-        <dd>
-            @Model.Dosage
-        </dd>
-        <dd>
-            @Model.Price
-        </dd>
-        <dd>
-            @Model.Description
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-controller="Pharmacy" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-controller="Pharmacy" asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-12 div-style">
+                <div class="col-md-6">Medicine: @Model.Name</div>
+                <div class="col-md-6">Price: @Model.Price BYN</div>
+            </div>
+            <div class="col-md-12 div-style">
+                <div class="col-md-6">
+                    Presence pharmacy: 
+                    <span class="label @(Model.AvailabilityPharmacy ? "label-success" : "label-danger")">
+                        @(Model.AvailabilityPharmacy ? "Available" : "Not available")
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    Prescription availability: 
+                    <span class="label @(Model.PrescriptionMedicine == false ? "label-success" : "label-danger")">
+                        @(Model.PrescriptionMedicine == false ? "Without recipe" : "With recipe")
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-12 div-style">
+                <div class="col-md-6">International name: @Model.InternationalName.Name</div>
+                <div class="col-md-6">Company: @Model.Company.Name</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project project-info">
+                <div class="shape">
+                    <div class="shape-text">
+                        PharmacyApp
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="lead">
+                        Description @Model.Name
+                    </h3>
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span>
+            <a asp-controller="Pharmacy" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-controller="Pharmacy" asp-action="Delete" asp-route-id="@Model.Id">Delete</a> |
+        </span>
+    }
     <a href="/catalog">Back to Catalog</a>
 </div>

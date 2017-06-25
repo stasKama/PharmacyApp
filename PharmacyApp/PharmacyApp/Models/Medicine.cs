@@ -11,35 +11,35 @@ namespace PharmacyApp.Models
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Название лекарства\" обязательное для ввода")]
-        [Display(Name = "Название лекарства")]
+        [Required(ErrorMessage = "Field \"Name medicine\" is required")]
+        [Display(Name = "Name medicine")]
         public string Name { get; set; }
 
-        [Display(Name = "Наличие рецепта")]
+        [Display(Name = "Prescription availability")]
         public bool PrescriptionMedicine { get; set; }
 
-        [Display(Name = "Наличие в аптеке")]
+        [Display(Name = "Presence pharmacy")]
         public bool AvailabilityPharmacy { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Дозировка лекарства\" обязательное для ввода")]
-        [Display(Name = "Дозировка лекарства")]
-        [Range(1, 10000, ErrorMessage = "Недопустимая дозировка")]
+        [Required(ErrorMessage = "Field \"Dosage medicine\" is required")]
+        [Display(Name = "Dosage medicine")]
+        [Range(1, 10000, ErrorMessage = "Inadmissible dosage")]
         public int Dosage { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Цена лекарства\" обязательное для ввода")]
-        [Display(Name = "Цена лекарства")]
+        [Required(ErrorMessage = "Field \"Price medicine\" is required")]
+        [Display(Name = "Price medicine")]
         public decimal Price { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Описание лекарства")]
+        [Display(Name = "Description medicine")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Компания производитель\" обязательное для ввода")]
-        [Display(Name = "Компания производитель")]
+        [Required(ErrorMessage = "Field \"Company\" is required")]
+        [Display(Name = "Company")]
         public int CompanyId { get; set; }
 
-        [Required(ErrorMessage = "Поле \"Международное название\" обязательное для ввода")]
-        [Display(Name = "Международное название")]
+        [Required(ErrorMessage = "Field \"International name\" is required")]
+        [Display(Name = "International name")]
         public int InternationalNameId { get; set; }
 
         public Company Company { get; set; }
